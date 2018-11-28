@@ -1,0 +1,56 @@
+<wm-page pagetitle="Master Ac" name="page1"> 
+    <wm-header content="header" name="header1"></wm-header> 
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav> 
+    <wm-content name="content1"> 
+        <wm-page-content columnwidth="12" name="page_content1" backgroundcolor="#ffffff"> 
+            <wm-breadcrumb dataset="MasterData, Aircraft" name="breadcrumb1"></wm-breadcrumb> 
+            <wm-panel iconclass="wi wi-paper-plane" autoclose="outsideClick" title="Aircarft List" name="panel1" class="panel-primary"> 
+                <wm-panel-footer name="panel_footer1"> 
+                    <wm-label padding="unset 0.5em" class="text-muted" caption="Addition Info" name="label1"></wm-label> 
+                </wm-panel-footer> 
+                <wm-livetable formlayout="dialog" name="AircraftLiveTable1"> 
+                    <wm-table gridfirstrowselect="true" editmode="dialog" name="AircraftTable1" title="" dataset="bind:Variables.RedelgaAircraftData.dataSet" navigation="Basic" filtermode="multicolumn" showrecordcount="true"> 
+                        <wm-table-column binding="tailNumber" caption="Registration" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="redelDate" caption="Redelicery Date" primary-key="false" edit-widget-type="date" type="date" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="company" caption="Airline" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="msn" caption="MSN" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="aircraftType.type" caption="Type" edit-widget-type="text" related-entity-name="AircraftType" type="string" generator="assigned" readonly="true" show="true"></wm-table-column> 
+                        <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column> 
+                        <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false" widget-type="button" position="header"></wm-table-action> 
+                        <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="editRow($event)" disabled="false"></wm-table-row-action> 
+                        <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleteRow($event)" disabled="false"></wm-table-row-action> 
+                    </wm-table> 
+                    <wm-liveform errormessage="" title="Aircraft Info" formlayout="dialog" iconclass="wi wi-edit" name="AircraftLiveForm1" dataset="bind:Variables.RedelgaAircraftData.dataSet" captionalign="left" captionposition="top"> 
+                        <wm-layoutgrid columns="2" name="layoutgrid2"> 
+                            <wm-gridrow name="gridrow3"> 
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn5"> 
+                                    <wm-form-field name="tailNumber" displayname="Registration" show="true" primary-key="false" generator="assigned" key="tailNumber" type="string" readonly="false" required="false" widget="text" maxchars="60" inputtype="text" placeholder="Enter value"></wm-form-field> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn6"> 
+                                    <wm-form-field name="redelDate" displayname="Redel Date" show="true" primary-key="false" generator="assigned" key="redelDate" type="date" readonly="false" required="false" widget="date" outputformat="yyyy-MM-dd" placeholder="Select date"></wm-form-field> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                            <wm-gridrow name="gridrow4"> 
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn7"> 
+                                    <wm-form-field name="company" displayname="Airline" show="true" primary-key="false" generator="assigned" key="company" type="string" readonly="false" required="false" widget="text" maxchars="60" inputtype="text" placeholder="Enter value"></wm-form-field> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn8"> 
+                                    <wm-form-field name="msn" displayname="MSN" show="true" primary-key="false" generator="assigned" key="msn" type="string" readonly="false" required="false" widget="text" maxchars="60" inputtype="text" placeholder="Enter value"></wm-form-field> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                            <wm-gridrow name="gridrow1"> 
+                                <wm-gridcolumn name="gridcolumn1" columnwidth="6"> 
+                                    <wm-form-field name="aircraftType" displayname="Type" show="true" primary-key="false" generator="assigned" key="aircraftType" type="list" is-related="true" readonly="false" required="false" widget="select" placeholder="Select value" displayexpression="type"></wm-form-field> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                        </wm-layoutgrid> 
+                        <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field> 
+                        <wm-form-action key="cancel" display-name="Cancel" show="true" class="form-cancel btn-secondary" iconclass="wi wi-cancel" title="Cancel" action="cancel()" disabled="false" type="button" update-mode="true"></wm-form-action> 
+                        <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" type="submit" update-mode="true" action=""></wm-form-action> 
+                    </wm-liveform> 
+                </wm-livetable> 
+            </wm-panel> 
+        </wm-page-content> 
+    </wm-content> 
+    <wm-footer content="footer" name="footer1"></wm-footer> 
+</wm-page>

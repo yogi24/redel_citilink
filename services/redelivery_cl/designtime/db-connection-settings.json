@@ -1,0 +1,50 @@
+{
+  "username" : "postgres",
+  "password" : "7b6a43524a3522097f6b75790c5c783a172653",
+  "url" : "jdbc:postgresql://103.9.36.119:5432/redelivery_cl",
+  "driverClass" : "org.postgresql.Driver",
+  "dialect" : "com.wavemaker.runtime.data.dialect.WMPostgresSQLDialect",
+  "serviceId" : "redelivery_cl",
+  "packageName" : "com.redel_citilink.redelivery_cl",
+  "dbType" : "PostgreSQL",
+  "host" : "103.9.36.119",
+  "dbName" : "redelivery_cl",
+  "port" : "5432",
+  "schemaName" : "public",
+  "tableFilter" : [ {
+    "table" : "aircraft_utilization",
+    "schema" : "public"
+  }, {
+    "table" : "aircraft_type",
+    "schema" : "public"
+  }, {
+    "table" : "aircraft",
+    "schema" : "public"
+  }, {
+    "table" : "redelivery_condition",
+    "schema" : "public"
+  }, {
+    "table" : "mtc_task",
+    "schema" : "public"
+  }, {
+    "table" : "mtc_task_planned",
+    "schema" : "public"
+  } ],
+  "schemaFilter" : [ ],
+  "impersonateUser" : false,
+  "activeDirectoryDomain" : null,
+  "hbm2ddl" : "none",
+  "maxPageSize" : 100,
+  "minPoolSize" : 2,
+  "maxPoolSize" : 4,
+  "transactionTimeout" : 30,
+  "dataSourceType" : "WM_MANAGED_DATASOURCE",
+  "jndiName" : "",
+  "reloadInfo" : {
+    "reload" : true,
+    "reason" : "MIGRATION_FAILED",
+    "message" : "Source code re-generation needed due to framework level changes.",
+    "reImport" : true
+  },
+  "readOnly" : false
+}

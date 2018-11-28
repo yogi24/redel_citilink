@@ -1,0 +1,53 @@
+{
+  "username" : "{WM_CLOUD_MYSQL_USER_NAME}",
+  "password" : "{WM_CLOUD_MYSQL_PASSWORD}",
+  "url" : "jdbc:mysql://{WM_CLOUD_MYSQL_HOST}/redelga?useUnicode=yes&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&createDatabaseIfNotExist=true",
+  "driverClass" : "com.mysql.jdbc.Driver",
+  "dialect" : "com.wavemaker.runtime.data.dialect.MySQLDialect",
+  "serviceId" : "redelga",
+  "packageName" : "com.redel_citilink.redelga",
+  "dbType" : "MySQL",
+  "host" : "{WM_CLOUD_MYSQL_HOST}",
+  "dbName" : "redelga",
+  "port" : "",
+  "schemaName" : null,
+  "tableFilter" : [ {
+    "table" : "aircraft",
+    "schema" : null
+  }, {
+    "table" : "aircraft_mtc_schedule",
+    "schema" : null
+  }, {
+    "table" : "aircraft_type",
+    "schema" : null
+  }, {
+    "table" : "aircraft_utilization_info",
+    "schema" : null
+  }, {
+    "table" : "camp_task",
+    "schema" : null
+  }, {
+    "table" : "redelivery_matrix",
+    "schema" : null
+  }, {
+    "table" : "task_schedule",
+    "schema" : null
+  } ],
+  "schemaFilter" : [ ],
+  "impersonateUser" : false,
+  "activeDirectoryDomain" : null,
+  "hbm2ddl" : "update",
+  "maxPageSize" : 100,
+  "minPoolSize" : 2,
+  "maxPoolSize" : 4,
+  "transactionTimeout" : 30,
+  "dataSourceType" : "WM_MANAGED_DATASOURCE",
+  "jndiName" : "",
+  "reloadInfo" : {
+    "reload" : true,
+    "reason" : "MIGRATION_FAILED",
+    "message" : "Source code re-generation needed due to framework level changes.",
+    "reImport" : true
+  },
+  "readOnly" : false
+}

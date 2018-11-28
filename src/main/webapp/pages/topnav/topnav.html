@@ -1,0 +1,32 @@
+<wm-partial name="topnav" type="topnav"> 
+    <wm-navbar name="navbar1"> 
+        <wm-nav name="leftTopLinks" type="navbar" class="navbar-left"> 
+            <wm-nav-item name="list_home"> 
+                <wm-anchor caption="Home" name="homeLink" iconclass="wi wi-home" on-click="Actions.goToPage_Main.invoke()"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item7"> 
+                <wm-anchor name="anchor5" iconclass="wi wi-clock-square" caption="Redelivery" on-click="Actions.goToPage_redel_main_page.invoke()"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="list_services"> 
+                <wm-anchor caption="Maintenace" name="orderLink" iconclass="wi wi-build" on-click="Actions.goToPage_maintenance_main_page.invoke()"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item7_1"> 
+                <wm-anchor name="anchor6" iconclass="wi wi-attach-money" caption="Finance" on-click="Actions.goToPage_under_develop.invoke()"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item9"> 
+                <wm-menu caption="Report" autoclose="outsideClick" name="menu2" iconclass="wi wi-file" type="anchor" dataset="LDNL, Engine LLP, Engine Refurbish, Airframe, Landing Gear, Brakes n Wheel, Trhuster n Reserver, Cabin"></wm-menu> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item5"> 
+                <wm-menu caption="Masterdata" autoclose="outsideClick" name="menu1" iconclass="wi wi-file" type="anchor" menuposition="down,right" dataset="bind:Variables.master_menu.dataSet" itemlabel="label" itemlink="link" itemicon="icon" orderby="label:desc"></wm-menu> 
+            </wm-nav-item> 
+        </wm-nav> 
+        <wm-nav name="rightTopLinks" type="navbar" class="navbar-right" show="false"> 
+            <wm-nav-item name="list_help"> 
+                <wm-anchor caption="Help" name="helpLink" iconclass="wi wi-help-outline"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="list_logout"> 
+                <wm-anchor caption="Logout" name="logoutLink" iconclass="wi wi-sign-out" on-click="Actions.logoutAction.invoke()"></wm-anchor> 
+            </wm-nav-item> 
+        </wm-nav> 
+    </wm-navbar> 
+</wm-partial>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<beans xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd" xmlns="http://www.springframework.org/schema/beans" xmlns:security="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <context:component-scan base-package="com.redel_citilink.redelivery_cl.controller,com.redel_citilink.redelivery_cl.service,com.redel_citilink.redelivery_cl.dao" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"/>
+    <bean class="com.wavemaker.runtime.data.spring.WMPropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>
+                    classpath:redelivery_cl.properties
+                </value>
+            </list>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="searchSystemEnvironment" value="true"/>
+    </bean>
+    <bean class="com.zaxxer.hikari.HikariConfig" id="redelivery_clHikariConfig">
+        <property name="jdbcUrl" value="${redelivery_cl.url}"/>
+        <property name="driverClassName" value="${redelivery_cl.driverClass}"/>
+        <property name="username" value="${redelivery_cl.username}"/>
+        <property name="password" value="${redelivery_cl.password}"/>
+        <property name="maximumPoolSize" value="${redelivery_cl.maxPoolSize}"/>
+        <property name="minimumIdle" value="${redelivery_cl.minPoolSize}"/>
+        <property name="connectionTimeout" value="30000"/>
+        <property name="validationTimeout" value="5000"/>
+        <property name="idleTimeout" value="600000"/>
+        <property name="maxLifetime" value="1800000"/>
+        <property name="initializationFailTimeout" value="-1"/>
+        <property name="leakDetectionThreshold" value="120000"/>
+        <property name="registerMbeans" value="false"/>
+    </bean>
+    <bean class="com.zaxxer.hikari.HikariDataSource" lazy-init="true" destroy-method="close" id="redelivery_clWMManagedDataSource">
+        <constructor-arg ref="redelivery_clHikariConfig"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.data.interceptors.WMEntityInterceptor" id="redelivery_clEntityInterceptor"/>
+    <bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" id="redelivery_clSessionFactory">
+        <property name="dataSource" ref="redelivery_clDataSource"/>
+        <property name="packagesToScan" value="com.redel_citilink.redelivery_cl"/>
+        <property name="entityInterceptor" ref="redelivery_clEntityInterceptor"/>
+        <property name="entityTypeFilters" ref="nonHistoryEntitiesFilter"/>
+        <property name="mappingResources">
+            <list>
+                <value>
+                redelivery_cl-queries.hbm.xml
+                </value>
+            </list>
+        </property>
+        <property name="hibernateProperties" ref="redelivery_clHibernateProperties"/>
+    </bean>
+    <bean class="org.springframework.orm.hibernate5.HibernateTransactionManager" id="redelivery_clTransactionManager">
+        <property name="sessionFactory" ref="redelivery_clSessionFactory"/>
+        <property name="defaultTimeout" value="${redelivery_cl.transactionTimeout}"/>
+    </bean>
+    <bean class="org.springframework.orm.hibernate5.HibernateTemplate" id="redelivery_clTemplate">
+        <property name="sessionFactory" ref="redelivery_clSessionFactory"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.data.dao.query.WMQueryExecutorImpl" id="redelivery_clWMQueryExecutor">
+        <property name="template" ref="redelivery_clTemplate"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.data.dao.procedure.WMProcedureExecutorImpl" id="redelivery_clWMProcedureExecutor">
+        <property name="template" ref="redelivery_clTemplate"/>
+        <property name="serviceId" value="redelivery_cl"/>
+    </bean>
+    <bean class="org.springframework.beans.factory.config.PropertiesFactoryBean" id="redelivery_clHibernateProperties">
+        <property name="properties">
+            <props>
+                <prop key="hibernate.dialect">
+                ${redelivery_cl.dialect}
+                </prop>
+                <prop key="hibernate.default_schema">
+                    `${redelivery_cl.schemaName}`
+                    </prop>
+                <prop key="hibernate.show_sql">
+                    false
+                </prop>
+                <prop key="hibernate.globally_quoted_identifiers">
+                    false
+                </prop>
+                <prop key="hibernate.hbm2ddl.auto">
+                ${redelivery_cl.hbm2ddl}
+                </prop>
+                <prop key="hibernate.temp.use_jdbc_metadata_defaults">
+                    false
+                </prop>
+                <prop key="hibernate.schema_update.unique_constraint_strategy">
+                    skip
+                </prop>
+            </props>
+        </property>
+    </bean>
+    <bean class="com.wavemaker.runtime.resolver.WMPageableHandlerMethodArgumentResolver" id="redelivery_clPageableHandlerMethodResolver">
+        <property name="pageParameterName" value="page"/>
+        <property name="sizeParameterName" value="size"/>
+        <property name="oneIndexedParameters" value="true"/>
+        <property name="maxPageSize" value="${redelivery_cl.maxPageSize}"/>
+        <property name="fallbackPageable">
+            <bean class="org.springframework.data.domain.PageRequest">
+                <constructor-arg value="0"/>
+                <constructor-arg value="20"/>
+            </bean>
+        </property>
+    </bean>
+    <bean class="com.wavemaker.runtime.data.datasource.WMDataSource" id="redelivery_clDataSource">
+        <property name="dataSourceType" value="${redelivery_cl.dataSourceType}"/>
+        <property name="jndiName" value="${redelivery_cl.jndiName}"/>
+        <property name="serviceId" value="redelivery_cl"/>
+    </bean>
+    <tx:annotation-driven xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"/>
+</beans>

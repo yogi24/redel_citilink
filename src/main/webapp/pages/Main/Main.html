@@ -1,0 +1,150 @@
+<wm-page name="mainpage" pagetitle="Main"> 
+    <wm-header content="header" name="header" height="auto"></wm-header> 
+    <wm-top-nav name="topnav" content="topnav"></wm-top-nav> 
+    <wm-content name="content"> 
+        <wm-page-content columnwidth="12" name="mainContent" padding="unset 15px" backgroundcolor="#ffffff"> 
+            <wm-layoutgrid name="layoutgrid1"> 
+                <wm-gridrow name="gridrow1"> 
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn1" padding="unset 5px unset unset"> 
+                        <wm-chart type="Column" title="Utilization" height="250px" iconclass="wi wi-bar-chart" name="chart2" dataset="bind:Variables.ac_utilization.dataSet" xaxislabel="Registration" barspacing="0.5" yaxislabel="Daily, Weekly, Yearly FH and FC" ynumberformat=".0f" class="panel-success" xaxisdatakey="aircraft.tailNumber" yaxisdatakey="dailyForecastFc,dailyForecastFh,weeklyForecastFc,weeklyForecastFh,yearlyForecastFc,yearlyForecastFh" reducexticks="false"></wm-chart> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn2" padding="unset unset unset 5px"> 
+                        <wm-chart type="Column" title="Current FH and FC" height="250px" iconclass="wi wi-bar-chart" name="chart4" dataset="bind:Variables.ac_utilization.dataSet" yaxisdatakey="fcAfterLastMt,fhAfterLastMt" xaxisdatakey="aircraft.tailNumber" orderby="aircraft.tailNumber:desc" yaxislabel="Curr. FH, Curr. FC" xaxislabel="Registration" barspacing="0.5" class="panel-primary panel-success" reducexticks="false"></wm-chart> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow name="gridrow2"> 
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn3" padding="unset 5px unset unset"> 
+                        <wm-panel iconclass="wi wi-build" autoclose="outsideClick" title="Maintenance Schedule" name="panel1" class="panel-primary panel-success"> 
+                            <wm-panel-footer name="panel_footer1"> 
+                                <wm-label padding="unset 0.5em" class="text-muted" caption="Addition Info" name="label1"></wm-label> 
+                            </wm-panel-footer> 
+                            <wm-accordion name="accordion1"> 
+                                <wm-accordionpane name="accordionpane1" title="Agustus 2018" backgroundcolor="#b0a18e"> 
+                                    <wm-layoutgrid name="layoutgrid2"> 
+                                        <wm-gridrow name="gridrow3"> 
+                                            <wm-gridcolumn columnwidth="4" name="gridcolumn5"> 
+                                                <wm-label padding="unset 0.5em" name="label2" caption="Week 1"></wm-label> 
+                                            </wm-gridcolumn> 
+                                            <wm-gridcolumn columnwidth="8" name="gridcolumn6"> 
+                                                <wm-label padding="unset 0.5em" name="label14" caption="PK-GPA, PK-GAA"></wm-label> 
+                                            </wm-gridcolumn> 
+                                        </wm-gridrow> 
+                                        <wm-gridrow name="gridrow5"> 
+                                            <wm-gridcolumn columnwidth="4" name="gridcolumn9"> 
+                                                <wm-label padding="unset 0.5em" caption="Week 2" name="label3"></wm-label> 
+                                            </wm-gridcolumn> 
+                                            <wm-gridcolumn columnwidth="8" name="gridcolumn10"> 
+                                                <wm-label padding="unset 0.5em" caption="PK-GPP, PK-GPG" name="label15"></wm-label> 
+                                            </wm-gridcolumn> 
+                                        </wm-gridrow> 
+                                        <wm-gridrow name="gridrow6"> 
+                                            <wm-gridcolumn columnwidth="4" name="gridcolumn11"> 
+                                                <wm-label padding="unset 0.5em" caption="Week 3" name="label4"></wm-label> 
+                                            </wm-gridcolumn> 
+                                            <wm-gridcolumn columnwidth="8" name="gridcolumn12"> 
+                                                <wm-label padding="unset 0.5em" caption="PK-GFN, PK-GFR" name="label16"></wm-label> 
+                                            </wm-gridcolumn> 
+                                        </wm-gridrow> 
+                                        <wm-gridrow name="gridrow4"> 
+                                            <wm-gridcolumn columnwidth="4" name="gridcolumn7"> 
+                                                <wm-label padding="unset 0.5em" caption="Week 4" name="label5"></wm-label> 
+                                            </wm-gridcolumn> 
+                                            <wm-gridcolumn columnwidth="8" name="gridcolumn8"> 
+                                                <wm-label padding="unset 0.5em" caption="PK-GMH, PK-GMF" name="label17"></wm-label> 
+                                            </wm-gridcolumn> 
+                                        </wm-gridrow> 
+                                    </wm-layoutgrid> 
+                                </wm-accordionpane> 
+                                <wm-accordionpane name="accordionpane2" title="September 2018" backgroundcolor="#97743a"> 
+                                    <wm-layoutgrid name="layoutgrid8"> 
+                                        <wm-gridrow name="gridrow27"> 
+                                            <wm-gridcolumn columnwidth="4" name="gridcolumn53"> 
+                                                <wm-label padding="unset 0.5em" caption="Week 1" name="label35"></wm-label> 
+                                            </wm-gridcolumn> 
+                                            <wm-gridcolumn columnwidth="8" name="gridcolumn54"> 
+                                                <wm-label padding="unset 0.5em" caption="PK-GPA, PK-GAA" name="label36"></wm-label> 
+                                            </wm-gridcolumn> 
+                                        </wm-gridrow> 
+                                        <wm-gridrow name="gridrow28"> 
+                                            <wm-gridcolumn columnwidth="4" name="gridcolumn55"> 
+                                                <wm-label padding="unset 0.5em" caption="Week 2" name="label37"></wm-label> 
+                                            </wm-gridcolumn> 
+                                            <wm-gridcolumn columnwidth="8" name="gridcolumn56"> 
+                                                <wm-label padding="unset 0.5em" caption="PK-GPP, PK-GPG" name="label38"></wm-label> 
+                                            </wm-gridcolumn> 
+                                        </wm-gridrow> 
+                                        <wm-gridrow name="gridrow29"> 
+                                            <wm-gridcolumn columnwidth="4" name="gridcolumn57"> 
+                                                <wm-label padding="unset 0.5em" caption="Week 3" name="label39"></wm-label> 
+                                            </wm-gridcolumn> 
+                                            <wm-gridcolumn columnwidth="8" name="gridcolumn58"> 
+                                                <wm-label padding="unset 0.5em" caption="PK-GFN, PK-GFR" name="label40"></wm-label> 
+                                            </wm-gridcolumn> 
+                                        </wm-gridrow> 
+                                        <wm-gridrow name="gridrow30"> 
+                                            <wm-gridcolumn columnwidth="4" name="gridcolumn59"> 
+                                                <wm-label padding="unset 0.5em" caption="Week 4" name="label41"></wm-label> 
+                                            </wm-gridcolumn> 
+                                            <wm-gridcolumn columnwidth="8" name="gridcolumn60"> 
+                                                <wm-label padding="unset 0.5em" caption="PK-GMH, PK-GMF" name="label42"></wm-label> 
+                                            </wm-gridcolumn> 
+                                        </wm-gridrow> 
+                                    </wm-layoutgrid> 
+                                </wm-accordionpane> 
+                                <wm-accordionpane name="accordionpane3" title="Oktober 2018" backgroundcolor="#8e7e4d"> 
+                                    <wm-layoutgrid name="layoutgrid9"> 
+                                        <wm-gridrow name="gridrow31"> 
+                                            <wm-gridcolumn columnwidth="4" name="gridcolumn61"> 
+                                                <wm-label padding="unset 0.5em" caption="Week 1" name="label43"></wm-label> 
+                                            </wm-gridcolumn> 
+                                            <wm-gridcolumn columnwidth="8" name="gridcolumn62"> 
+                                                <wm-label padding="unset 0.5em" caption="PK-GPA, PK-GAA" name="label44"></wm-label> 
+                                            </wm-gridcolumn> 
+                                        </wm-gridrow> 
+                                        <wm-gridrow name="gridrow32"> 
+                                            <wm-gridcolumn columnwidth="4" name="gridcolumn63"> 
+                                                <wm-label padding="unset 0.5em" caption="Week 2" name="label45"></wm-label> 
+                                            </wm-gridcolumn> 
+                                            <wm-gridcolumn columnwidth="8" name="gridcolumn64"> 
+                                                <wm-label padding="unset 0.5em" caption="PK-GPP, PK-GPG" name="label46"></wm-label> 
+                                            </wm-gridcolumn> 
+                                        </wm-gridrow> 
+                                        <wm-gridrow name="gridrow33"> 
+                                            <wm-gridcolumn columnwidth="4" name="gridcolumn65"> 
+                                                <wm-label padding="unset 0.5em" caption="Week 3" name="label47"></wm-label> 
+                                            </wm-gridcolumn> 
+                                            <wm-gridcolumn columnwidth="8" name="gridcolumn66"> 
+                                                <wm-label padding="unset 0.5em" caption="PK-GFN, PK-GFR" name="label48"></wm-label> 
+                                            </wm-gridcolumn> 
+                                        </wm-gridrow> 
+                                        <wm-gridrow name="gridrow34"> 
+                                            <wm-gridcolumn columnwidth="4" name="gridcolumn67"> 
+                                                <wm-label padding="unset 0.5em" caption="Week 4" name="label49"></wm-label> 
+                                            </wm-gridcolumn> 
+                                            <wm-gridcolumn columnwidth="8" name="gridcolumn68"> 
+                                                <wm-label padding="unset 0.5em" caption="PK-GMH, PK-GMF" name="label50"></wm-label> 
+                                            </wm-gridcolumn> 
+                                        </wm-gridrow> 
+                                    </wm-layoutgrid> 
+                                </wm-accordionpane> 
+                            </wm-accordion> 
+                        </wm-panel> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn4" padding="unset unset unset 5px"> 
+                        <wm-panel iconclass="wi wi-calendar" autoclose="outsideClick" title="Redelivery Schedule" class="panel-primary panel-success" name="panel2"> 
+                            <wm-panel-footer name="panel_footer2"> 
+                                <wm-label padding="unset 0.5em" class="text-muted" caption="Addition Info" name="label18"></wm-label> 
+                            </wm-panel-footer> 
+                            <wm-table name="AircraftTable1" title="" dataset="bind:Variables.aircraft_info.dataSet" navigation="Basic" filtermode="multicolumn" showrecordcount="true"> 
+                                <wm-table-column binding="tailNumber" caption="Registration" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                                <wm-table-column binding="redelDate" caption="Redelivery Date" edit-widget-type="date" type="date" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                                <wm-table-column binding="aircraftType.type" caption="Aircraft Type" edit-widget-type="text" related-entity-name="AircraftType" type="string" generator="assigned" readonly="true" show="true"></wm-table-column> 
+                            </wm-table> 
+                        </wm-panel> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+            </wm-layoutgrid> 
+        </wm-page-content> 
+    </wm-content> 
+    <wm-footer name="footer" content="footer"></wm-footer> 
+</wm-page>

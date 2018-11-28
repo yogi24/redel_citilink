@@ -1,0 +1,66 @@
+{
+  "RedelgaAircraftTypeData" : {
+    "_id" : "wm-RedelgaAircraftTypeData-wm.LiveVariable-1530153957073",
+    "name" : "RedelgaAircraftTypeData",
+    "owner" : "Page",
+    "category" : "wm.LiveVariable",
+    "dataBinding" : [ ],
+    "operation" : "read",
+    "dataSet" : [ ],
+    "type" : "AircraftType",
+    "isList" : true,
+    "saveInPhonegap" : false,
+    "maxResults" : 20,
+    "designMaxResults" : 10,
+    "inFlightBehavior" : "executeLast",
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "transformationRequired" : false,
+    "liveSource" : "redelga",
+    "ignoreCase" : true,
+    "matchMode" : "start",
+    "orderBy" : "id asc",
+    "propertiesMap" : {
+      "columns" : [ {
+        "fieldName" : "id",
+        "type" : "integer",
+        "fullyQualifiedType" : "integer",
+        "columnName" : "ID",
+        "isPrimaryKey" : true,
+        "notNull" : true,
+        "length" : 0,
+        "precision" : 10,
+        "generator" : "identity",
+        "isRelated" : false,
+        "scale" : 0
+      }, {
+        "fieldName" : "type",
+        "type" : "string",
+        "fullyQualifiedType" : "string",
+        "columnName" : "type",
+        "isPrimaryKey" : false,
+        "notNull" : false,
+        "length" : 255,
+        "precision" : 0,
+        "generator" : "assigned",
+        "isRelated" : false,
+        "scale" : 0
+      } ],
+      "entityName" : "AircraftType",
+      "fullyQualifiedName" : "com.redel_citilink.redelga.AircraftType",
+      "tableType" : "TABLE",
+      "primaryFields" : [ "id" ]
+    },
+    "isDefault" : true,
+    "bindCount" : 1,
+    "tableName" : "aircraft_type",
+    "tableType" : "TABLE",
+    "properties" : [ ],
+    "relatedTables" : [ ],
+    "package" : "com.redel_citilink.redelga.AircraftType",
+    "filterExpressions" : {
+      "condition" : "AND",
+      "rules" : [ ]
+    }
+  }
+}

@@ -1,0 +1,90 @@
+<wm-page pagetitle="Maintenance Detail Page" name="page1"> 
+    <wm-header content="header" name="header1"></wm-header> 
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav> 
+    <wm-content name="content1"> 
+        <wm-page-content columnwidth="12" name="page_content1" backgroundcolor="#ffffff"> 
+            <wm-breadcrumb dataset="bind:&quot;Maintenance, &quot; + pageParams.ac_reg + &quot; Detail&quot;" name="breadcrumb1" on-beforenavigate="Actions.goToPage_maintenance_main_page.invoke()"></wm-breadcrumb> 
+            <wm-panel iconclass="wi wi-calendar" autoclose="outsideClick" title="bind:pageParams.ac_reg + &quot; Maintenance Schedule&quot;" name="panel1" class="panel-success"> 
+                <wm-panel-footer name="panel_footer1"> 
+                    <wm-layoutgrid name="layoutgrid2"> 
+                        <wm-gridrow name="gridrow4"> 
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn9" horizontalalign="center"> 
+                                <wm-button class="btn-info" caption="Show Calendar" type="button" margin="unset 0.5em" name="button1" on-click="Widgets.calendar.open()"></wm-button> 
+                            </wm-gridcolumn> 
+                        </wm-gridrow> 
+                    </wm-layoutgrid> 
+                </wm-panel-footer> 
+                <wm-livetable formlayout="dialog" name="AircraftMtcScheduleLiveTable1"> 
+                    <wm-table gridfirstrowselect="false" editmode="dialog" name="AircraftMtcScheduleTable1" title="" dataset="bind:Variables.RedelgaAircraftMtcScheduleData.dataSet" navigation="Basic" filtermode="multicolumn" showrecordcount="true" on-rowdblclick="Widgets.work_package.open()"> 
+                        <wm-table-column binding="aircraft.tailNumber" caption="Registration" edit-widget-type="text" related-entity-name="Aircraft" type="string" generator="assigned" readonly="true" show="true"></wm-table-column> 
+                        <wm-table-column binding="lastMtcStart" caption="Last MTC" edit-widget-type="date" type="date" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="nextMtcStart" caption="Next MTC" edit-widget-type="date" type="date" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="workPackage" caption="Work Package" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="estCost" caption="Est. Cost" edit-widget-type="text" type="string" generator="assigned" formatpattern="toCurrency" currencypattern="USD" fractionsize="0" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column> 
+                        <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false" widget-type="button" position="header"></wm-table-action> 
+                        <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="editRow($event)" disabled="false"></wm-table-row-action> 
+                        <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleteRow($event)" disabled="false"></wm-table-row-action> 
+                    </wm-table> 
+                    <wm-liveform errormessage="" title="Aircraft Maintenance Schedule" formlayout="dialog" iconclass="wi wi-edit" name="AircraftMtcScheduleLiveForm1" dataset="bind:Variables.RedelgaAircraftMtcScheduleData.dataSet" captionalign="left" captionposition="top"> 
+                        <wm-layoutgrid columns="3" name="layoutgrid1"> 
+                            <wm-gridrow name="gridrow1"> 
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn1"> 
+                                    <wm-form-field name="aircraft" displayname="Aircraft" show="true" primary-key="false" generator="assigned" key="aircraft" type="list" is-related="true" readonly="false" required="false" widget="select" placeholder="Select value" displayexpression="tailNumber"></wm-form-field> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn2"> 
+                                    <wm-form-field name="workPackage" displayname="Work Package" show="true" primary-key="false" generator="assigned" key="workPackage" type="string" readonly="false" required="false" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn3"> 
+                                    <wm-form-field name="estCost" displayname="Est Cost" show="true" primary-key="false" generator="assigned" key="estCost" type="string" readonly="false" required="false" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                            <wm-gridrow name="gridrow2"> 
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn4"> 
+                                    <wm-form-field name="lastMtcStart" displayname="Last Mtc Start" show="true" primary-key="false" generator="assigned" key="lastMtcStart" type="date" readonly="false" required="false" widget="date" placeholder="Select date" outputformat="yyyy-MM-dd"></wm-form-field> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn5"> 
+                                    <wm-form-field name="lastMtcEnd" displayname="Last Mtc End" show="true" primary-key="false" generator="assigned" key="lastMtcEnd" type="date" readonly="false" required="false" widget="date" placeholder="Select date" outputformat="yyyy-MM-dd"></wm-form-field> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn6"> 
+                                    <wm-form-field name="totCost" displayname="Tot Cost" show="true" primary-key="false" generator="assigned" key="totCost" type="string" readonly="false" required="false" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                            <wm-gridrow name="gridrow3"> 
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn7"> 
+                                    <wm-form-field name="nextMtcEnd" displayname="Next Mtc End" show="true" primary-key="false" generator="assigned" key="nextMtcEnd" type="date" readonly="false" required="false" widget="date" placeholder="Select date" outputformat="yyyy-MM-dd"></wm-form-field> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn8"> 
+                                    <wm-form-field name="nextMtcStart" displayname="Next Mtc Start" show="true" primary-key="false" generator="assigned" key="nextMtcStart" type="date" readonly="false" required="false" widget="date" placeholder="Select date" outputformat="yyyy-MM-dd"></wm-form-field> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                        </wm-layoutgrid> 
+                        <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field> 
+                        <wm-form-action key="cancel" display-name="Cancel" show="true" class="form-cancel btn-secondary" iconclass="wi wi-cancel" title="Cancel" action="cancel()" disabled="false" type="button" update-mode="true"></wm-form-action> 
+                        <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" type="submit" update-mode="true" action=""></wm-form-action> 
+                    </wm-liveform> 
+                </wm-livetable> 
+            </wm-panel> 
+        </wm-page-content> 
+    </wm-content> 
+    <wm-footer content="footer" name="footer1"></wm-footer>  
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:pageParams.ac_reg + &quot; Maintenance Schedule&quot;" iconclass="wi wi-file-text" name="calendar" width="60%" height="40%"> 
+        <wm-dialogactions name="dialogactions1"> 
+            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button2"></wm-button> 
+        </wm-dialogactions> 
+        <wm-calendar name="calendar1" dataset="bind:Variables.RedelgaAircraftMtcScheduleData.dataSet" eventstart="nextMtcStart" eventend="nextMtcEnd" eventtitle="bind:$[data[$i].aircraft.tailNumber] + &quot; - &quot; + $[data[$i].workPackage]" controls="navigation,today"></wm-calendar> 
+    </wm-dialog>   
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:&quot;Work Package List - &quot; + Widgets.AircraftMtcScheduleTable1.selecteditem.workPackage" iconclass="wi wi-file-text" name="work_package" width="80%"> 
+        <wm-dialogactions name="dialogactions2"> 
+            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button3"></wm-button> 
+        </wm-dialogactions> 
+        <wm-table name="CampTaskTable1" title="" dataset="bind:Variables.RedelgaCampTaskData.dataSet" navigation="Basic"> 
+            <wm-table-column binding="campNumber" caption="Camp Number" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column> 
+            <wm-table-column binding="docNumber" caption="Doc Number" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column> 
+            <wm-table-column binding="docType" caption="Doc Type" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column> 
+            <wm-table-column binding="description" caption="Description" width="30%" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column> 
+            <wm-table-column binding="taskCode" caption="Task Code" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column> 
+            <wm-table-column binding="thereshold" caption="Thereshold" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column> 
+        </wm-table> 
+    </wm-dialog>  
+</wm-page>

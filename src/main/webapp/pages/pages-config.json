@@ -1,0 +1,85 @@
+[ {
+  "name" : "Common",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "Login",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Main",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "footer",
+  "type" : "FOOTER",
+  "params" : [ ]
+}, {
+  "name" : "header",
+  "type" : "HEADER",
+  "params" : [ ]
+}, {
+  "name" : "leftnav",
+  "type" : "LEFTNAV",
+  "params" : [ ]
+}, {
+  "name" : "maintenance_detail_page",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "ac_reg",
+    "type" : "string"
+  }, {
+    "name" : "ac_id",
+    "type" : "integer"
+  } ]
+}, {
+  "name" : "maintenance_main_page",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "master_ac",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "master_ac_type",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "master_ac_utilization",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "master_mtc_task",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "master_redel_matrix",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "redel_detail_page",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "ac_reg",
+    "type" : "string"
+  }, {
+    "name" : "ac_id",
+    "type" : "integer"
+  } ]
+}, {
+  "name" : "redel_main_page",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "rightnav",
+  "type" : "RIGHTNAV",
+  "params" : [ ]
+}, {
+  "name" : "topnav",
+  "type" : "TOPNAV",
+  "params" : [ ]
+}, {
+  "name" : "under_develop",
+  "type" : "PAGE",
+  "params" : [ ]
+} ]

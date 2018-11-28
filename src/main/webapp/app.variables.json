@@ -1,0 +1,203 @@
+{
+  "appNotification" : {
+    "_id" : "wm-appErrorHandler-wm.NotificationVariable-1454664620943",
+    "name" : "appNotification",
+    "owner" : "App",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "class",
+      "value" : "Error",
+      "type" : "list"
+    }, {
+      "target" : "toasterPosition",
+      "value" : "bottom right",
+      "type" : "list"
+    } ],
+    "operation" : "toast"
+  },
+  "goToPage_Main" : {
+    "_id" : "wm-wm.NavigationVariable1389180517517",
+    "name" : "goToPage_Main",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "operation" : "gotoPage",
+    "pageName" : "Main"
+  },
+  "goToPage_maintenance_detail_page" : {
+    "_id" : "wm-goToPage_maintenance_detail_page-wm.NavigationVariable-1530202447012",
+    "name" : "goToPage_maintenance_detail_page",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ {
+      "target" : "pageName",
+      "value" : "maintenance_detail_page",
+      "type" : "string"
+    } ],
+    "operation" : "gotoPage",
+    "pageName" : "maintenance_detail_page",
+    "dataSet" : [ {
+      "type" : "string",
+      "target" : "ac_reg",
+      "value" : "bind:Widgets.AircraftUtilizationInfoTable1.selecteditem.aircraft.tailNumber"
+    }, {
+      "type" : "integer",
+      "target" : "ac_id",
+      "value" : "bind:Widgets.AircraftUtilizationInfoTable1.selecteditem.aircraftId"
+    } ],
+    "pageTransitions" : "none"
+  },
+  "goToPage_maintenance_main_page" : {
+    "_id" : "wm-goToPage_maintenance_main_page-wm.NavigationVariable-1530184072968",
+    "name" : "goToPage_maintenance_main_page",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "maintenance_main_page",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "goToPage_master_ac" : {
+    "_id" : "wm-goToPage_master_ac-wm.NavigationVariable-1529983486464",
+    "name" : "goToPage_master_ac",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "master_ac",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "goToPage_master_ac_type" : {
+    "_id" : "wm-goToPage_master_ac_type-wm.NavigationVariable-1530153785825",
+    "name" : "goToPage_master_ac_type",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "master_ac_type",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "goToPage_master_ac_utilization" : {
+    "_id" : "wm-goToPage_master_ac_utilization-wm.NavigationVariable-1530155978156",
+    "name" : "goToPage_master_ac_utilization",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "master_ac_utilization",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "goToPage_master_mtc_task" : {
+    "_id" : "wm-goToPage_master_mtc_task-wm.NavigationVariable-1530154095301",
+    "name" : "goToPage_master_mtc_task",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "master_mtc_task",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "goToPage_master_redel_matrix" : {
+    "_id" : "wm-goToPage_master_redel_matrix-wm.NavigationVariable-1530154551759",
+    "name" : "goToPage_master_redel_matrix",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "master_redel_matrix",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "goToPage_redel_detail_page" : {
+    "_id" : "wm-goToPage_redel_detail_page-wm.NavigationVariable-1530168501584",
+    "name" : "goToPage_redel_detail_page",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ {
+      "target" : "pageName",
+      "value" : "redel_detail_page",
+      "type" : "string"
+    } ],
+    "operation" : "gotoPage",
+    "pageName" : "redel_detail_page",
+    "dataSet" : [ {
+      "type" : "string",
+      "target" : "ac_reg",
+      "value" : "bind:Widgets.AircraftTable1.selecteditem.tailNumber"
+    }, {
+      "type" : "integer",
+      "target" : "ac_id",
+      "value" : "bind:Widgets.AircraftTable1.selecteditem.id"
+    } ],
+    "pageTransitions" : "none"
+  },
+  "goToPage_redel_main_page" : {
+    "_id" : "wm-goToPage_redel_main_page-wm.NavigationVariable-1530168257400",
+    "name" : "goToPage_redel_main_page",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "redel_main_page",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "goToPage_under_develop" : {
+    "_id" : "wm-goToPage_under_develop-wm.NavigationVariable-1530207055073",
+    "name" : "goToPage_under_develop",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "under_develop",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "master_menu" : {
+    "_id" : "wm-master_menu-wm.Variable-1529983208695",
+    "name" : "master_menu",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "label" : "Aircraft",
+      "link" : "#/master_ac",
+      "icon" : "wi wi-paper-plane"
+    }, {
+      "label" : "Aircraft Type",
+      "link" : "#/master_ac_type",
+      "icon" : "wi wi-airplanemode-active"
+    }, {
+      "label" : "Maintenance Task",
+      "link" : "#/master_mtc_task",
+      "icon" : "wi wi-list"
+    }, {
+      "label" : "Redelivery Matrix",
+      "link" : "#/master_redel_matrix",
+      "icon" : "wi wi-assessment"
+    }, {
+      "label" : "Aircraft Utilization",
+      "link" : "#/master_ac_utilization",
+      "icon" : "wi wi-data-usage"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "supportedLocale" : {
+    "_id" : "wm-wm.Variable1402640443182",
+    "name" : "supportedLocale",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "dataSet" : {
+      "en" : "English"
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  }
+}

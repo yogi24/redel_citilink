@@ -1,0 +1,16 @@
+<wm-page pagetitle="Redel Main Page" name="page1"> 
+    <wm-header content="header" name="header1"></wm-header> 
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav> 
+    <wm-content name="content1"> 
+        <wm-page-content columnwidth="12" name="page_content1" backgroundcolor="#ffffff"> 
+            <wm-breadcrumb dataset="Redelivery" name="breadcrumb1"></wm-breadcrumb> 
+            <wm-table name="AircraftTable1" title="Aircraft List" dataset="bind:Variables.RedelgaAircraftData.dataSet" navigation="Basic" class="panel-success" on-rowselect="Actions.goToPage_redel_detail_page.invoke()"> 
+                <wm-table-column binding="tailNumber" caption="Registration" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column> 
+                <wm-table-column binding="aircraftType.type" caption="Aircraft Type" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string" related-entity-name="AircraftType" readonly="true"></wm-table-column> 
+                <wm-table-column binding="msn" caption="MSN" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column> 
+                <wm-table-column binding="redelDate" caption="Redelivery Date" generator="assigned" pcdisplay="true" mobiledisplay="true" type="date"></wm-table-column> 
+            </wm-table> 
+        </wm-page-content> 
+    </wm-content> 
+    <wm-footer content="footer" name="footer1"></wm-footer> 
+</wm-page>

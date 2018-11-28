@@ -1,0 +1,185 @@
+<wm-page pagetitle="Redel Detail Page" name="page1"> 
+    <wm-header content="header" name="header1"></wm-header> 
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav> 
+    <wm-content name="content1"> 
+        <wm-page-content columnwidth="12" name="page_content1" backgroundcolor="#ffffff"> 
+            <wm-breadcrumb dataset="bind:&quot;Redelivery, &quot; + pageParams.ac_reg + &quot; Detail&quot;" name="breadcrumb1" on-beforenavigate="Actions.goToPage_redel_main_page.invoke()"></wm-breadcrumb> 
+            <wm-layoutgrid name="layoutgrid1"> 
+                <wm-gridrow name="gridrow1"> 
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn1" padding="unset 5px unset unset"> 
+                        <wm-panel iconclass="wi wi-bar-chart" autoclose="outsideClick" title="bind:pageParams.ac_reg + &quot; Utilization&quot;" name="panel1" class="panel-success"> 
+                            <wm-panel-footer name="panel_footer1"> 
+                                <wm-layoutgrid name="layoutgrid3"> 
+                                    <wm-gridrow name="gridrow12"> 
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn23" horizontalalign="center"> 
+                                            <wm-button class="btn-info" caption="Detail" type="button" margin="unset 0.5em" name="button2" on-click="Widgets.UtilizationDetail.open()" textalign="left"></wm-button> 
+                                        </wm-gridcolumn> 
+                                    </wm-gridrow> 
+                                </wm-layoutgrid> 
+                            </wm-panel-footer> 
+                            <wm-chart type="Column" title="" height="250px" iconclass="" name="chart1" dataset="bind:Variables.ac_utilization.dataSet" yaxisdatakey="dailyForecastFc,dailyForecastFh,weeklyForecastFc,weeklyForecastFh,yearlyForecastFc,yearlyForecastFh" xaxisdatakey="aircraft.tailNumber" yaxislabel="Daily, Weekly, Yearly FH and FC" reducexticks="false" ynumberformat=".0f"></wm-chart> 
+                        </wm-panel> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn2" padding="unset unset unset 5px"> 
+                        <wm-panel iconclass="wi wi-bar-chart" autoclose="outsideClick" title="bind:pageParams.ac_reg + &quot; Redelivery Matrix&quot;" name="panel2" class="panel-success"> 
+                            <wm-panel-footer name="panel_footer2"> 
+                                <wm-layoutgrid name="layoutgrid4"> 
+                                    <wm-gridrow name="gridrow14"> 
+                                        <wm-gridcolumn columnwidth="12" horizontalalign="center" name="gridcolumn27"> 
+                                            <wm-button class="btn-info" caption="Detail" type="button" margin="unset 0.5em" on-click="Widgets.RedeliveryDetail.open()" textalign="left" name="button3"></wm-button> 
+                                        </wm-gridcolumn> 
+                                    </wm-gridrow> 
+                                </wm-layoutgrid> 
+                            </wm-panel-footer> 
+                            <wm-chart type="Column" title="" height="250px" iconclass="" name="chart2" dataset="bind:Variables.redel_matrix.dataSet" yaxisdatakey="flightCycle,flightHours,redelFlightCycle,redelFlightHours" xaxisdatakey="component" yaxislabel="Current &amp; Redelivery FH and FC" reducexticks="false" theme="Annabelle" ynumberformat=".0f"></wm-chart> 
+                        </wm-panel> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow name="gridrow2"> 
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn3"> 
+                        <wm-panel iconclass="wi wi-bar-chart" autoclose="outsideClick" title="bind:pageParams.ac_reg + &quot; Gap Condition&quot;" name="panel3" class="panel-success"> 
+                            <wm-panel-footer name="panel_footer3"> 
+                                <wm-label padding="unset 0.5em" class="text-muted" caption="Addition Info" name="label34"></wm-label> 
+                            </wm-panel-footer> 
+                            <wm-chart type="Column" title="" height="250px" iconclass="" name="chart3" ynumberformat=".0f" dataset="bind:Variables.redel_matrix.dataSet" yaxisdatakey="mtcFlightCycle,mtcFlightHours,redelFlightCycle,redelFlightHours" xaxisdatakey="component" yaxislabel="Fligh Hours &amp; Flight Cycle"></wm-chart> 
+                        </wm-panel> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+            </wm-layoutgrid> 
+        </wm-page-content> 
+    </wm-content> 
+    <wm-footer content="footer" name="footer1"></wm-footer>  
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Utilization Detail" iconclass="wi wi-file-text" name="UtilizationDetail"> 
+        <wm-layoutgrid name="layoutgrid2"> 
+            <wm-gridrow name="gridrow3"> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn5"> 
+                    <wm-label padding="unset 0.5em" caption="Current FH" name="label3"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn6"> 
+                    <wm-label padding="unset 0.5em" caption="bind:Variables.ac_utilization.dataSet.data[$i].fhAfterLastMt" name="label4"></wm-label> 
+                </wm-gridcolumn> 
+            </wm-gridrow> 
+            <wm-gridrow name="gridrow4"> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn7"> 
+                    <wm-label padding="unset 0.5em" caption="Current FC" name="label5"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn8"> 
+                    <wm-label padding="unset 0.5em" caption="bind:Variables.ac_utilization.dataSet.data[$i].fcAfterLastMt" name="label6"></wm-label> 
+                </wm-gridcolumn> 
+            </wm-gridrow> 
+            <wm-gridrow name="gridrow5"> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn9"> 
+                    <wm-label padding="unset 0.5em" caption="Daily FH" name="label7"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn10"> 
+                    <wm-label padding="unset 0.5em" caption="bind:Variables.ac_utilization.dataSet.data[$i].dailyForecastFh" name="label13"></wm-label> 
+                </wm-gridcolumn> 
+            </wm-gridrow> 
+            <wm-gridrow name="gridrow6"> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn11"> 
+                    <wm-label padding="unset 0.5em" caption="Daily FC" name="label8"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn12"> 
+                    <wm-label padding="unset 0.5em" caption="bind:Variables.ac_utilization.dataSet.data[$i].dailyForecastFc" name="label14"></wm-label> 
+                </wm-gridcolumn> 
+            </wm-gridrow> 
+            <wm-gridrow name="gridrow7"> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn13"> 
+                    <wm-label padding="unset 0.5em" caption="Weekly FH" name="label9"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn14"> 
+                    <wm-label padding="unset 0.5em" caption="bind:Variables.ac_utilization.dataSet.data[$i].weeklyForecastFh" name="label15"></wm-label> 
+                </wm-gridcolumn> 
+            </wm-gridrow> 
+            <wm-gridrow name="gridrow8"> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn15"> 
+                    <wm-label padding="unset 0.5em" caption="Weekly FC" name="label10"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn16"> 
+                    <wm-label padding="unset 0.5em" caption="bind:Variables.ac_utilization.dataSet.data[$i].weeklyForecastFc" name="label16"></wm-label> 
+                </wm-gridcolumn> 
+            </wm-gridrow> 
+            <wm-gridrow name="gridrow9"> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn17"> 
+                    <wm-label padding="unset 0.5em" caption="Yearly FH" name="label11"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn18"> 
+                    <wm-label padding="unset 0.5em" caption="bind:Variables.ac_utilization.dataSet.data[$i].yearlyForecastFh" name="label17"></wm-label> 
+                </wm-gridcolumn> 
+            </wm-gridrow> 
+            <wm-gridrow name="gridrow10"> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn19"> 
+                    <wm-label padding="unset 0.5em" caption="Yearly FC" name="label12"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="6" name="gridcolumn20"> 
+                    <wm-label padding="unset 0.5em" caption="bind:Variables.ac_utilization.dataSet.data[$i].yearlyForecastFc" name="label18"></wm-label> 
+                </wm-gridcolumn> 
+            </wm-gridrow> 
+        </wm-layoutgrid> 
+        <wm-dialogactions name="dialogactions1"> 
+            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button1"></wm-button> 
+        </wm-dialogactions> 
+    </wm-dialog>   
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Redelivery Detail" iconclass="wi wi-file-text" name="RedeliveryDetail"> 
+        <wm-layoutgrid name="layoutgrid5"> 
+            <wm-gridrow name="gridrow17"> 
+                <wm-gridcolumn columnwidth="4" name="gridcolumn32"> 
+                    <wm-label padding="unset 0.5em" caption="Component" name="label23"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="4" name="gridcolumn33"> 
+                    <wm-label padding="unset 0.5em" caption="Flight Hours" name="label24"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="4" name="gridcolumn34"> 
+                    <wm-label padding="unset 0.5em" caption="Flight Cycle" name="label25"></wm-label> 
+                </wm-gridcolumn> 
+            </wm-gridrow> 
+            <wm-gridrow name="gridrow15"> 
+                <wm-gridcolumn columnwidth="4" name="gridcolumn28"> 
+                    <wm-label padding="unset 0.5em" caption="Engine 1" name="label19"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="4" name="gridcolumn29"> 
+                    <wm-label padding="unset 0.5em" caption="3500" name="label20"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="4" name="gridcolumn35"> 
+                    <wm-label padding="unset 0.5em" caption="3500" name="label30"></wm-label> 
+                </wm-gridcolumn> 
+            </wm-gridrow> 
+            <wm-gridrow name="gridrow16"> 
+                <wm-gridcolumn columnwidth="4" name="gridcolumn30"> 
+                    <wm-label padding="unset 0.5em" caption="Engine 2" name="label21"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="4" name="gridcolumn31"> 
+                    <wm-label padding="unset 0.5em" caption="3500" name="label22"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="4" name="gridcolumn36"> 
+                    <wm-label padding="unset 0.5em" caption="3500" name="label31"></wm-label> 
+                </wm-gridcolumn> 
+            </wm-gridrow> 
+            <wm-gridrow name="gridrow18"> 
+                <wm-gridcolumn columnwidth="4" name="gridcolumn37"> 
+                    <wm-label padding="unset 0.5em" caption="Landing Gear" name="label26"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="4" name="gridcolumn38"> 
+                    <wm-label padding="unset 0.5em" caption="4000" name="label28"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="4" name="gridcolumn39"> 
+                    <wm-label padding="unset 0.5em" caption="4000" name="label32"></wm-label> 
+                </wm-gridcolumn> 
+            </wm-gridrow> 
+            <wm-gridrow name="gridrow19"> 
+                <wm-gridcolumn columnwidth="4" name="gridcolumn40"> 
+                    <wm-label padding="unset 0.5em" caption="APU" name="label27"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="4" name="gridcolumn41"> 
+                    <wm-label padding="unset 0.5em" caption="3000" name="label29"></wm-label> 
+                </wm-gridcolumn> 
+                <wm-gridcolumn columnwidth="4" name="gridcolumn42"> 
+                    <wm-label padding="unset 0.5em" caption="3000" name="label33"></wm-label> 
+                </wm-gridcolumn> 
+            </wm-gridrow> 
+        </wm-layoutgrid> 
+        <wm-dialogactions name="dialogactions2"> 
+            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button4"></wm-button> 
+        </wm-dialogactions> 
+    </wm-dialog>  
+</wm-page>

@@ -1,0 +1,88 @@
+<wm-page pagetitle="Master Ac Utilization" name="page1"> 
+    <wm-header content="header" name="header1"></wm-header> 
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav> 
+    <wm-content name="content1"> 
+        <wm-page-content columnwidth="12" name="page_content1"> 
+            <wm-breadcrumb dataset="Masterdata, Aircraft Utilization" name="breadcrumb1"></wm-breadcrumb> 
+            <wm-panel iconclass="wi wi-data-usage" autoclose="outsideClick" title="Aircraft Utilization" name="panel1" class="panel-primary"> 
+                <wm-panel-footer name="panel_footer1"> 
+                    <wm-label padding="unset 0.5em" class="text-muted" caption="Addition Info" name="label1"></wm-label> 
+                </wm-panel-footer> 
+                <wm-livetable formlayout="dialog" name="livetable1"> 
+                    <wm-table gridfirstrowselect="true" editmode="dialog" name="AircraftUtilizationInfoTable1" title="" dataset="bind:Variables.RedelgaAircraftUtilizationInfoData.dataSet" navigation="Basic" filtermode="multicolumn" showrecordcount="true"> 
+                        <wm-table-column binding="aircraft.tailNumber" caption="Registration" edit-widget-type="text" related-entity-name="Aircraft" type="string" generator="assigned" readonly="true" show="true"></wm-table-column> 
+                        <wm-table-column binding="dailyForecastFh" caption="Daily FH (Tot.)" edit-widget-type="number" type="integer" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="dailyForecastFc" caption="Daily FC (Tot.)" edit-widget-type="number" type="integer" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="weeklyForecastFh" caption="Weekly FH (Tot.)" primary-key="false" edit-widget-type="number" type="integer" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="weeklyForecastFc" caption="Weekly FC (Tot.)" primary-key="false" edit-widget-type="number" type="integer" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="yearlyForecastFh" caption="Yearly FH (Tot.)" primary-key="false" edit-widget-type="number" type="integer" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="yearlyForecastFc" caption="Yearly FC (Tot.)" primary-key="false" edit-widget-type="number" type="integer" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="lastMtDateStart" caption="Last MTC Date" edit-widget-type="date" type="date" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="nextMtDateStart" caption="Next MTC Date" edit-widget-type="date" type="date" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                        <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column> 
+                        <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false" widget-type="button" position="header"></wm-table-action> 
+                        <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="editRow($event)" disabled="false"></wm-table-row-action> 
+                        <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleteRow($event)" disabled="false"></wm-table-row-action> 
+                    </wm-table> 
+                    <wm-liveform errormessage="" title="Aircraft_utilization_info Info" formlayout="dialog" iconclass="wi wi-edit" name="AircraftUtilizationInfoLiveForm1" dataset="bind:Variables.RedelgaAircraftUtilizationInfoData.dataSet" captionalign="left" captionposition="top"> 
+                        <wm-layoutgrid columns="3" name="layoutgrid1"> 
+                            <wm-gridrow name="gridrow1"> 
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn1"> 
+                                    <wm-form-field name="aircraft" displayname="Aircraft" show="true" primary-key="false" generator="assigned" key="aircraft" type="list" is-related="true" readonly="false" required="false" widget="select" placeholder="Select value" displayexpression="tailNumber"></wm-form-field> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn2"> 
+                                    <wm-form-field name="dailyForecastFh" displayname="Daily Forecast FH" show="true" primary-key="false" generator="assigned" key="dailyForecastFh" type="integer" readonly="false" required="false" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn3"> 
+                                    <wm-form-field name="dailyForecastFc" displayname="Daily Forecast FC" show="true" primary-key="false" generator="assigned" key="dailyForecastFc" type="integer" readonly="false" required="false" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                            <wm-gridrow name="gridrow2"> 
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn5"> 
+                                    <wm-form-field name="fhAfterLastMt" displayname="FH After Last MTC" show="true" primary-key="false" generator="assigned" key="fhAfterLastMt" type="integer" readonly="false" required="false" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn6"> 
+                                    <wm-form-field name="fcAfterLastMt" displayname="FC After Last MTC" show="true" primary-key="false" generator="assigned" key="fcAfterLastMt" type="integer" readonly="false" required="false" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                            <wm-gridrow name="gridrow3"> 
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn8"> 
+                                    <wm-form-field name="lastMtDateStart" displayname="Last MTC Date" show="true" primary-key="false" generator="assigned" key="lastMtDateStart" type="date" readonly="false" required="false" widget="date" placeholder="Select date" outputformat="yyyy-MM-dd"></wm-form-field> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn9"> 
+                                    <wm-form-field name="nextMtDateStart" displayname="Next MTC Date" show="true" primary-key="false" generator="assigned" key="nextMtDateStart" type="date" readonly="false" required="false" widget="date" placeholder="Select date" outputformat="yyyy-MM-dd"></wm-form-field> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn1" columnwidth="4"> 
+                                    <wm-form-field name="lastMtDateEnd" displayname="Last Mt Date End" show="true" primary-key="false" generator="assigned" key="lastMtDateEnd" type="date" readonly="false" required="false" widget="date" outputformat="yyyy-MM-dd" placeholder="Select date"></wm-form-field> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                            <wm-gridrow name="gridrow1"> 
+                                <wm-gridcolumn name="gridcolumn2" columnwidth="4"> 
+                                    <wm-form-field name="nextMtDateEnd" displayname="Next Mt Date End" show="true" primary-key="false" generator="assigned" key="nextMtDateEnd" type="date" readonly="false" required="false" widget="date" outputformat="yyyy-MM-dd" placeholder="Select date"></wm-form-field> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn3" columnwidth="4"> 
+                                    <wm-form-field name="weeklyForecastFh" displayname="Weekly Forecast Fh" show="true" primary-key="false" generator="assigned" key="weeklyForecastFh" type="integer" readonly="false" required="false" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn4" columnwidth="4"> 
+                                    <wm-form-field name="weeklyForecastFc" displayname="Weekly Forecast Fc" show="true" primary-key="false" generator="assigned" key="weeklyForecastFc" type="integer" readonly="false" required="false" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                            <wm-gridrow name="gridrow2"> 
+                                <wm-gridcolumn name="gridcolumn5" columnwidth="4"> 
+                                    <wm-form-field name="yearlyForecastFh" displayname="Yearly Forecast Fh" show="true" primary-key="false" generator="assigned" key="yearlyForecastFh" type="integer" readonly="false" required="false" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn6" columnwidth="4"> 
+                                    <wm-form-field name="yearlyForecastFc" displayname="Yearly Forecast Fc" show="true" primary-key="false" generator="assigned" key="yearlyForecastFc" type="integer" readonly="false" required="false" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                        </wm-layoutgrid> 
+                        <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field> 
+                        <wm-form-action key="cancel" display-name="Cancel" show="true" class="form-cancel btn-secondary" iconclass="wi wi-cancel" title="Cancel" action="cancel()" disabled="false" type="button" update-mode="true"></wm-form-action> 
+                        <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" type="submit" update-mode="true" action=""></wm-form-action> 
+                    </wm-liveform> 
+                </wm-livetable> 
+            </wm-panel> 
+        </wm-page-content> 
+    </wm-content> 
+    <wm-footer content="footer" name="footer1"></wm-footer> 
+</wm-page>

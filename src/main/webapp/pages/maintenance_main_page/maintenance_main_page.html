@@ -1,0 +1,21 @@
+<wm-page pagetitle="Maintenance Main Page" name="page1"> 
+    <wm-header content="header" name="header1"></wm-header> 
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav> 
+    <wm-content name="content1"> 
+        <wm-page-content columnwidth="12" name="page_content1" backgroundcolor="#ffffff"> 
+            <wm-breadcrumb dataset="Maintenance" name="breadcrumb1"></wm-breadcrumb> 
+            <wm-panel iconclass="wi wi-build" autoclose="outsideClick" title="Aircraft List" name="panel1" class="panel-success"> 
+                <wm-panel-footer name="panel_footer1"> 
+                    <wm-label padding="unset 0.5em" class="text-muted" caption="Addition Info" name="label1"></wm-label> 
+                </wm-panel-footer> 
+                <wm-table name="AircraftUtilizationInfoTable1" title="" dataset="bind:Variables.RedelgaAircraftUtilizationInfoData.dataSet" navigation="Basic" filtermode="multicolumn" showrecordcount="true" on-rowselect="Actions.goToPage_maintenance_detail_page.invoke()"> 
+                    <wm-table-column binding="aircraft.tailNumber" caption="Registration" edit-widget-type="text" related-entity-name="Aircraft" type="string" generator="assigned" readonly="true" show="true"></wm-table-column> 
+                    <wm-table-column binding="aircraft.redelDate" caption="Redelivery Date" edit-widget-type="date" related-entity-name="Aircraft" type="date" generator="assigned" readonly="true" show="true"></wm-table-column> 
+                    <wm-table-column binding="lastMtDateStart" caption="Last MTC" edit-widget-type="date" type="date" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                    <wm-table-column binding="nextMtDateStart" caption="Next MTC" edit-widget-type="date" type="date" generator="assigned" show="true" readonly="false"></wm-table-column> 
+                </wm-table> 
+            </wm-panel> 
+        </wm-page-content> 
+    </wm-content> 
+    <wm-footer content="footer" name="footer1"></wm-footer> 
+</wm-page>
