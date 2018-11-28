@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+import com.wavemaker.commons.MessageResource;
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
 import com.wavemaker.runtime.data.export.DataExportOptions;
@@ -106,7 +107,7 @@ public class MtcTaskPlannedServiceImpl implements MtcTaskPlannedService {
         MtcTaskPlanned deleted = this.wmGenericDao.findById(mtctaskplannedId);
         if (deleted == null) {
             LOGGER.debug("No MtcTaskPlanned found with id: {}", mtctaskplannedId);
-            throw new EntityNotFoundException(String.valueOf(mtctaskplannedId));
+            throw new EntityNotFoundException(MessageResource.create("com.wavemaker.runtime.entity.not.found"), MtcTaskPlanned.class.getSimpleName(), mtctaskplannedId);
         }
         this.wmGenericDao.delete(deleted);
         return deleted;

@@ -27,6 +27,7 @@ import com.wavemaker.runtime.data.expression.QueryFilter;
 import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.manager.ExportedFileManager;
 import com.wavemaker.runtime.file.model.Downloadable;
+import com.wavemaker.runtime.security.xss.XssDisable;
 import com.wavemaker.tools.api.core.annotations.WMAccessVisibility;
 import com.wavemaker.tools.api.core.models.AccessSpecifier;
 import com.wordnik.swagger.annotations.Api;
@@ -35,6 +36,7 @@ import com.wordnik.swagger.annotations.ApiParam;
 
 import com.redel_citilink.redelivery_cl.Aircraft;
 import com.redel_citilink.redelivery_cl.AircraftType;
+import com.redel_citilink.redelivery_cl.MtcTask;
 import com.redel_citilink.redelivery_cl.service.AircraftTypeService;
 
 
@@ -111,6 +113,7 @@ public class AircraftTypeController {
     @ApiOperation(value = "Returns the list of AircraftType instances matching the search criteria.")
     @RequestMapping(value = "/search", method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
     public Page<AircraftType> searchAircraftTypesByQueryFilters( Pageable pageable, @RequestBody QueryFilter[] queryFilters) {
         LOGGER.debug("Rendering AircraftTypes list by query filter:{}", (Object) queryFilters);
         return aircraftTypeService.findAll(queryFilters, pageable);
@@ -127,6 +130,7 @@ public class AircraftTypeController {
     @ApiOperation(value = "Returns the paginated list of AircraftType instances matching the optional query (q) request param. This API should be used only if the query string is too big to fit in GET request with request param. The request has to made in application/x-www-form-urlencoded format.")
     @RequestMapping(value="/filter", method = RequestMethod.POST, consumes= "application/x-www-form-urlencoded")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
     public Page<AircraftType> filterAircraftTypes(@ApiParam("conditions to filter the results") @RequestParam(value = "q", required = false) String query, Pageable pageable) {
         LOGGER.debug("Rendering AircraftTypes list by filter", query);
         return aircraftTypeService.findAll(query, pageable);
@@ -135,6 +139,7 @@ public class AircraftTypeController {
     @ApiOperation(value = "Returns downloadable file for the data matching the optional query (q) request param. If query string is too big to fit in GET request's query param, use POST method with application/x-www-form-urlencoded format.")
     @RequestMapping(value = "/export/{exportType}", method = {RequestMethod.GET,  RequestMethod.POST}, produces = "application/octet-stream")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
     public Downloadable exportAircraftTypes(@PathVariable("exportType") ExportType exportType, @ApiParam("conditions to filter the results") @RequestParam(value = "q", required = false) String query, Pageable pageable) {
          return aircraftTypeService.export(exportType, query, pageable);
     }
@@ -142,6 +147,7 @@ public class AircraftTypeController {
     @ApiOperation(value = "Returns a URL to download a file for the data matching the optional query (q) request param and the required fields provided in the Export Options.") 
     @RequestMapping(value = "/export", method = {RequestMethod.POST}, consumes = "application/json")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
     public StringWrapper exportAircraftTypesAndGetURL(@RequestBody DataExportOptions exportOptions, Pageable pageable) {
         String exportedFileName = exportOptions.getFileName();
         if(exportedFileName == null || exportedFileName.isEmpty()) {
@@ -155,6 +161,7 @@ public class AircraftTypeController {
 	@ApiOperation(value = "Returns the total count of AircraftType instances matching the optional query (q) request param. If query string is too big to fit in GET request's query param, use POST method with application/x-www-form-urlencoded format.")
 	@RequestMapping(value = "/count", method = {RequestMethod.GET, RequestMethod.POST})
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+	@XssDisable
 	public Long countAircraftTypes( @ApiParam("conditions to filter the results") @RequestParam(value = "q", required = false) String query) {
 		LOGGER.debug("counting AircraftTypes");
 		return aircraftTypeService.count(query);
@@ -163,9 +170,19 @@ public class AircraftTypeController {
     @ApiOperation(value = "Returns aggregated result with given aggregation info")
 	@RequestMapping(value = "/aggregations", method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+	@XssDisable
 	public Page<Map<String, Object>> getAircraftTypeAggregatedValues(@RequestBody AggregationInfo aggregationInfo, Pageable pageable) {
         LOGGER.debug("Fetching aggregated results for {}", aggregationInfo);
         return aircraftTypeService.getAggregatedValues(aggregationInfo, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/mtcTasks", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the mtcTasks instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<MtcTask> findAssociatedMtcTasks(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated mtcTasks");
+        return aircraftTypeService.findAssociatedMtcTasks(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/aircrafts", method=RequestMethod.GET)

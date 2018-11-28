@@ -12,9 +12,12 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PostPersist;
 import javax.persistence.SequenceGenerator;
@@ -22,6 +25,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -57,6 +62,8 @@ public class MtcTask implements Serializable {
     private String accessMhTotal;
     private String manHoursTotal;
     private String mpd;
+    private Integer acType;
+    private AircraftType aircraftType;
     private List<MtcTaskPlanned> mtcTaskPlanneds;
 
     @Id
@@ -278,6 +285,29 @@ public class MtcTask implements Serializable {
         this.mpd = mpd;
     }
 
+    @Column(name = "`ac_type`", nullable = true, scale = 0, precision = 10)
+    public Integer getAcType() {
+        return this.acType;
+    }
+
+    public void setAcType(Integer acType) {
+        this.acType = acType;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`ac_type`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_mtc_task_TO_aircraft_Gi0lm`"))
+    @Fetch(FetchMode.JOIN)
+    public AircraftType getAircraftType() {
+        return this.aircraftType;
+    }
+
+    public void setAircraftType(AircraftType aircraftType) {
+        if(aircraftType != null) {
+            this.acType = aircraftType.getId();
+        }
+
+        this.aircraftType = aircraftType;
+    }
     @JsonInclude(Include.NON_EMPTY)
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "mtcTask")
     @Cascade({CascadeType.SAVE_UPDATE})

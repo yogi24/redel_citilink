@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+import com.wavemaker.commons.MessageResource;
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
 import com.wavemaker.runtime.data.export.DataExportOptions;
@@ -32,6 +33,7 @@ import com.wavemaker.runtime.file.model.Downloadable;
 
 import com.redel_citilink.redelivery_cl.Aircraft;
 import com.redel_citilink.redelivery_cl.AircraftType;
+import com.redel_citilink.redelivery_cl.MtcTask;
 
 
 /**
@@ -44,6 +46,11 @@ import com.redel_citilink.redelivery_cl.AircraftType;
 public class AircraftTypeServiceImpl implements AircraftTypeService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AircraftTypeServiceImpl.class);
+
+    @Lazy
+    @Autowired
+    @Qualifier("redelivery_cl.MtcTaskService")
+    private MtcTaskService mtcTaskService;
 
     @Lazy
     @Autowired
@@ -129,7 +136,7 @@ public class AircraftTypeServiceImpl implements AircraftTypeService {
         AircraftType deleted = this.wmGenericDao.findById(aircrafttypeId);
         if (deleted == null) {
             LOGGER.debug("No AircraftType found with id: {}", aircrafttypeId);
-            throw new EntityNotFoundException(String.valueOf(aircrafttypeId));
+            throw new EntityNotFoundException(MessageResource.create("com.wavemaker.runtime.entity.not.found"), AircraftType.class.getSimpleName(), aircrafttypeId);
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
@@ -184,6 +191,17 @@ public class AircraftTypeServiceImpl implements AircraftTypeService {
 
     @Transactional(readOnly = true, value = "redelivery_clTransactionManager")
     @Override
+    public Page<MtcTask> findAssociatedMtcTasks(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated mtcTasks");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("aircraftType.id = '" + id + "'");
+
+        return mtcTaskService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "redelivery_clTransactionManager")
+    @Override
     public Page<Aircraft> findAssociatedAircrafts(Integer id, Pageable pageable) {
         LOGGER.debug("Fetching all associated aircrafts");
 
@@ -191,6 +209,15 @@ public class AircraftTypeServiceImpl implements AircraftTypeService {
         queryBuilder.append("aircraftType.id = '" + id + "'");
 
         return aircraftService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    /**
+     * This setter method should only be used by unit tests
+     *
+     * @param service MtcTaskService instance
+     */
+    protected void setMtcTaskService(MtcTaskService service) {
+        this.mtcTaskService = service;
     }
 
     /**

@@ -1,8 +1,8 @@
 /*START - Cool blue Theme*/
 .wm-app {
   /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
   /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -30,6 +30,7 @@
   /*********************************************************************************************************************************************/
   /****************************************************Advanced editors******************************************************************************/
   /*********************************************************************************************************************************************/
+  /******rich-editor class*******/
   /***color picker class: adding the default size and padding to the addon*******/
   /***popover class: removing the radius*******/
   /***Slider widget styling*******************/
@@ -1124,7 +1125,6 @@
   text-decoration: underline;
 }
 .wm-app a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2549,7 +2549,6 @@ a.wm-app .bg-danger:focus {
 .wm-app input[type="file"]:focus,
 .wm-app input[type="radio"]:focus,
 .wm-app input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3040,7 +3039,6 @@ select[multiple].wm-app .input-lg {
 .wm-app .btn.focus,
 .wm-app .btn:active.focus,
 .wm-app .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -5454,7 +5452,7 @@ button.wm-app .list-group-item-danger.active:focus {
   padding: 8px;
 }
 .wm-app .panel-heading {
-  padding: 8px;
+  padding: 10px 8px;
   border-bottom: 1px solid transparent;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
@@ -5476,7 +5474,7 @@ button.wm-app .list-group-item-danger.active:focus {
   color: inherit;
 }
 .wm-app .panel-footer {
-  padding: 8px;
+  padding: 10px 8px;
   background-color: #FFF;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   border-bottom-right-radius: 3px;
@@ -6826,8 +6824,11 @@ button.wm-app .close {
 .wm-app .form-group .control-label.text-danger {
   color: #d9534f;
 }
-.wm-app .form-group .ng-touched.ng-invalid {
+.wm-app .form-group .ng-touched.ng-invalid .form-control {
   border-color: #d9534f;
+}
+.wm-app .input-group-addon.colorpicker-container:last-child {
+  border-left: 1px solid #ccc;
 }
 .wm-app .checkbox,
 .wm-app .radio {
@@ -6892,11 +6893,26 @@ button.wm-app .close {
 .wm-app .app-mobile-header .app-mobile-header a {
   color: #FFFFFF;
 }
+.wm-app .nav li > .app-popover-wrapper a {
+  padding: 6px 8px;
+}
+.wm-app .nav li > .app-popover-wrapper a:hover,
+.wm-app .nav li > .app-popover-wrapper a:focus {
+  background-color: #eeeeee;
+}
+.wm-app .nav-pills > li .app-popover-wrapper a {
+  border-radius: 4px;
+}
+.wm-app .nav-pills > li.active .app-popover-wrapper a {
+  color: #fff;
+  background-color: #337ab7;
+}
 .wm-app .app-navbar {
   border-radius: 0;
   color: #FFFFFF;
 }
-.wm-app .app-navbar .navbar-nav li a {
+.wm-app .app-navbar .navbar-nav li a,
+.wm-app .app-navbar .navbar-nav li .app-popover-wrapper a {
   font-size: 1em;
   text-transform: uppercase;
   font-weight: normal;
@@ -6904,11 +6920,21 @@ button.wm-app .close {
   word-spacing: .4em;
 }
 .wm-app .app-navbar .navbar-nav li a:hover,
+.wm-app .app-navbar .navbar-nav li .app-popover-wrapper a:hover,
 .wm-app .app-navbar .navbar-nav li a:focus,
+.wm-app .app-navbar .navbar-nav li .app-popover-wrapper a:focus,
 .wm-app .app-navbar .navbar-nav li a.active,
-.wm-app .app-navbar .navbar-nav li a.app-popover-open {
+.wm-app .app-navbar .navbar-nav li .app-popover-wrapper a.active {
   color: #117391;
   background-color: transparent;
+}
+.wm-app .app-navbar .navbar-nav li .dropdown .dropdown-menu,
+.wm-app .app-navbar .navbar-nav li .app-popover-wrapper a {
+  line-height: 17px;
+}
+.wm-app .app-navbar .navbar-nav li.active .app-popover-wrapper a {
+  background-color: transparent;
+  color: #117391;
 }
 .wm-app .app-navbar .navbar-nav li > .dropdown .dropdown-menu {
   margin: 0;
@@ -6921,10 +6947,16 @@ button.wm-app .close {
 .wm-app .app-navbar .navbar-nav li > .dropdown .dropdown-menu a:hover {
   background-color: transparent;
 }
-.wm-app .app-navbar .navbar-nav .app-nav-item > .dropdown a.dropdown-toggle {
+.wm-app .app-navbar .navbar-nav .app-nav-item > .dropdown a.dropdown-toggle,
+.wm-app .app-navbar .navbar-nav .app-nav-item .app-popover-wrapper a.dropdown-toggle,
+.wm-app .app-navbar .navbar-nav .app-nav-item > .dropdown a,
+.wm-app .app-navbar .navbar-nav .app-nav-item .app-popover-wrapper a {
   color: inherit;
 }
-.wm-app .app-navbar .navbar-nav .app-nav-item > .dropdown a.dropdown-toggle:hover {
+.wm-app .app-navbar .navbar-nav .app-nav-item > .dropdown a.dropdown-toggle:hover,
+.wm-app .app-navbar .navbar-nav .app-nav-item .app-popover-wrapper a.dropdown-toggle:hover,
+.wm-app .app-navbar .navbar-nav .app-nav-item > .dropdown a:hover,
+.wm-app .app-navbar .navbar-nav .app-nav-item .app-popover-wrapper a:hover {
   background-color: transparent;
 }
 .wm-app .popover {
@@ -6932,6 +6964,13 @@ button.wm-app .close {
 }
 .wm-app .popover .popover-content {
   padding: 0;
+}
+.wm-app .navbar-inverse .navbar-nav > li.active .app-popover-wrapper a,
+.wm-app .navbar-inverse .navbar-nav > li.active .app-popover-wrapper a:hover,
+.wm-app .navbar-inverse .navbar-nav > li.active .app-popover-wrapper a:focus,
+.wm-app .navbar-inverse .navbar-nav > li.active .app-popover-wrapper a:active {
+  color: #fff;
+  background-color: #080808;
 }
 .wm-app .dropdown-menu > li > a {
   padding-top: 8px;
@@ -6942,14 +6981,20 @@ button.wm-app .close {
   margin-top: 0;
 }
 .wm-app .app-left-panel .nav li.active > a,
-.wm-app .app-right-panel .nav li.active > a {
+.wm-app .app-right-panel .nav li.active > a,
+.wm-app .app-left-panel .nav li.active .app-popover-wrapper a,
+.wm-app .app-right-panel .nav li.active .app-popover-wrapper a {
   color: inherit;
   background-color: #e6e4e4;
 }
 .wm-app .app-left-panel .nav li.active > a:hover,
 .wm-app .app-right-panel .nav li.active > a:hover,
+.wm-app .app-left-panel .nav li.active .app-popover-wrapper a:hover,
+.wm-app .app-right-panel .nav li.active .app-popover-wrapper a:hover,
 .wm-app .app-left-panel .nav li.active > a:focus,
-.wm-app .app-right-panel .nav li.active > a:focus {
+.wm-app .app-right-panel .nav li.active > a:focus,
+.wm-app .app-left-panel .nav li.active .app-popover-wrapper a:focus,
+.wm-app .app-right-panel .nav li.active .app-popover-wrapper a:focus {
   color: inherit;
   background-color: #e6e4e4;
 }
@@ -6961,8 +7006,8 @@ button.wm-app .close {
 .wm-app .app-right-panel .nav li .dropdown a,
 .wm-app .app-left-panel .nav li .dropdown a.dropdown-toggle,
 .wm-app .app-right-panel .nav li .dropdown a.dropdown-toggle,
-.wm-app .app-left-panel .nav li .app-popover a,
-.wm-app .app-right-panel .nav li .app-popover a {
+.wm-app .app-left-panel .nav li .app-popover-wrapper a,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a {
   font-size: 0.917em;
   text-transform: uppercase;
   letter-spacing: .025em;
@@ -6987,8 +7032,8 @@ button.wm-app .close {
 .wm-app .app-right-panel .nav li .dropdown a:hover,
 .wm-app .app-left-panel .nav li .dropdown a.dropdown-toggle:hover,
 .wm-app .app-right-panel .nav li .dropdown a.dropdown-toggle:hover,
-.wm-app .app-left-panel .nav li .app-popover a:hover,
-.wm-app .app-right-panel .nav li .app-popover a:hover {
+.wm-app .app-left-panel .nav li .app-popover-wrapper a:hover,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a:hover {
   color: #23B7E5;
   text-decoration: none;
   background-color: #e6e4e4;
@@ -7007,8 +7052,8 @@ button.wm-app .close {
 .wm-app .app-right-panel .nav li .dropdown a.active,
 .wm-app .app-left-panel .nav li .dropdown a.dropdown-toggle.active,
 .wm-app .app-right-panel .nav li .dropdown a.dropdown-toggle.active,
-.wm-app .app-left-panel .nav li .app-popover a.active,
-.wm-app .app-right-panel .nav li .app-popover a.active {
+.wm-app .app-left-panel .nav li .app-popover-wrapper a.active,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a.active {
   background-color: transparent;
   border-left-color: #23B7E5;
   color: #23B7E5;
@@ -7021,8 +7066,8 @@ button.wm-app .close {
 .wm-app .app-right-panel .nav li .dropdown a .app-icon,
 .wm-app .app-left-panel .nav li .dropdown a.dropdown-toggle .app-icon,
 .wm-app .app-right-panel .nav li .dropdown a.dropdown-toggle .app-icon,
-.wm-app .app-left-panel .nav li .app-popover a .app-icon,
-.wm-app .app-right-panel .nav li .app-popover a .app-icon {
+.wm-app .app-left-panel .nav li .app-popover-wrapper a .app-icon,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a .app-icon {
   vertical-align: inherit;
   margin-right: 0.3em;
 }
@@ -7034,8 +7079,8 @@ button.wm-app .close {
 .wm-app .app-right-panel .nav li .dropdown a .caret,
 .wm-app .app-left-panel .nav li .dropdown a.dropdown-toggle .caret,
 .wm-app .app-right-panel .nav li .dropdown a.dropdown-toggle .caret,
-.wm-app .app-left-panel .nav li .app-popover a .caret,
-.wm-app .app-right-panel .nav li .app-popover a .caret {
+.wm-app .app-left-panel .nav li .app-popover-wrapper a .caret,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a .caret {
   margin-right: .5em;
 }
 .wm-app .app-left-panel .nav li > .dropdown.open > .dropdown-menu,
@@ -7119,6 +7164,9 @@ button.wm-app .close {
 .wm-app .form-control-static {
   padding-bottom: 0;
 }
+.wm-app .model-holder[bsdatepicker] {
+  min-height: 31px;
+}
 .wm-app .app-form .control-label,
 .wm-app .app-liveform .control-label {
   padding: 6px 8px 0 8px;
@@ -7197,21 +7245,16 @@ button.wm-app .close {
 .wm-app .app-timeinput .dropdown-menu {
   color: #333333;
 }
-.wm-app .app-calendar thead tr th,
-.wm-app .app-date thead tr th,
-.wm-app .app-datetime thead tr th,
-.wm-app .app-timeinput thead tr th {
-  height: 2.5em;
-}
-.wm-app .app-calendar thead tr th button,
-.wm-app .app-date thead tr th button,
-.wm-app .app-datetime thead tr th button,
-.wm-app .app-timeinput thead tr th button {
+.wm-app .app-calendar thead tr th button.btn-default,
+.wm-app .app-date thead tr th button.btn-default,
+.wm-app .app-datetime thead tr th button.btn-default,
+.wm-app .app-timeinput thead tr th button.btn-default {
+  width: 100%;
   font-size: 1em;
   background: transparent;
-  border-color: transparent;
   color: #333333;
-  padding: 0.36em .63em;
+  border-color: transparent;
+  padding: 0.55em .83em;
 }
 .wm-app .app-calendar tbody .btn-default,
 .wm-app .app-date tbody .btn-default,
@@ -7222,7 +7265,7 @@ button.wm-app .close {
   color: #333333;
   width: auto;
   box-shadow: none;
-  padding: 0.36em .63em;
+  padding: 0.66em;
 }
 .wm-app .app-calendar tbody .btn-default.btn-info,
 .wm-app .app-date tbody .btn-default.btn-info,
@@ -7252,6 +7295,53 @@ button.wm-app .close {
   color: #337ab7;
   font-weight: bold;
 }
+.wm-app .app-calendar tbody td.is-highlighted:not(.disabled):not(.selected) span,
+.wm-app .app-date tbody td.is-highlighted:not(.disabled):not(.selected) span,
+.wm-app .app-datetime tbody td.is-highlighted:not(.disabled):not(.selected) span,
+.wm-app .app-timeinput tbody td.is-highlighted:not(.disabled):not(.selected) span {
+  background-color: #337ab7;
+  border-color: #337ab7;
+  color: #fff;
+}
+.wm-app .app-calendar tbody td.is-highlighted:not(.disabled):not(.selected) span.text-info,
+.wm-app .app-date tbody td.is-highlighted:not(.disabled):not(.selected) span.text-info,
+.wm-app .app-datetime tbody td.is-highlighted:not(.disabled):not(.selected) span.text-info,
+.wm-app .app-timeinput tbody td.is-highlighted:not(.disabled):not(.selected) span.text-info {
+  color: inherit;
+}
+.wm-app .app-calendar tbody td span.text-info,
+.wm-app .app-date tbody td span.text-info,
+.wm-app .app-datetime tbody td span.text-info,
+.wm-app .app-timeinput tbody td span.text-info {
+  color: #337ab7;
+  font-weight: bold;
+}
+.wm-app .app-calendar tbody td span.selected,
+.wm-app .app-date tbody td span.selected,
+.wm-app .app-datetime tbody td span.selected,
+.wm-app .app-timeinput tbody td span.selected {
+  background-color: #a0c4e4;
+  color: #333333;
+}
+.wm-app .app-calendar tbody td span:hover:not(.fc-day-number),
+.wm-app .app-date tbody td span:hover:not(.fc-day-number),
+.wm-app .app-datetime tbody td span:hover:not(.fc-day-number),
+.wm-app .app-timeinput tbody td span:hover:not(.fc-day-number) {
+  background-color: #337ab7;
+  border-color: #337ab7;
+  color: #fff;
+}
+.wm-app .app-calendar tbody td span.disabled:hover,
+.wm-app .app-date tbody td span.disabled:hover,
+.wm-app .app-datetime tbody td span.disabled:hover,
+.wm-app .app-timeinput tbody td span.disabled:hover,
+.wm-app .app-calendar tbody td span.is-other-month:hover,
+.wm-app .app-date tbody td span.is-other-month:hover,
+.wm-app .app-datetime tbody td span.is-other-month:hover,
+.wm-app .app-timeinput tbody td span.is-other-month:hover {
+  color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(168, 168, 168, 0.05);
+}
 .wm-app .app-calendar small,
 .wm-app .app-date small,
 .wm-app .app-datetime small,
@@ -7259,15 +7349,24 @@ button.wm-app .close {
   font-size: 1em;
   font-weight: normal;
 }
-.wm-app .app-date .dropdown-menu,
-.wm-app .app-datetime .dropdown-menu {
-  padding-top: 0;
+.wm-app .bs-datepicker {
+  border: 1px solid #ccc;
 }
-.wm-app .app-date .dropdown-menu li:last-child,
-.wm-app .app-datetime .dropdown-menu li:last-child {
-  border-top: 1px solid #ccc;
-  margin-top: 0.5em;
-  overflow: auto;
+.wm-app .bs-datepicker .bs-datepicker-head {
+  background: #fff;
+  color: #333;
+}
+.wm-app .bs-datepicker .bs-datepicker-body {
+  padding: 0;
+  border: none;
+}
+.wm-app .bs-datepicker table td.is-highlighted:not(.disabled):not(.selected) span {
+  background-color: #337ab7;
+  border-color: #337ab7;
+  color: #fff;
+}
+.wm-app .bs-datepicker table td.is-highlighted:not(.disabled):not(.selected) span.text-info {
+  color: inherit;
 }
 .wm-app .app-timeinput tbody .am-pm .btn,
 .wm-app .app-datetime tbody .am-pm .btn {
@@ -7287,6 +7386,14 @@ button.wm-app .close {
 .wm-app .app-calendar {
   background-color: #F3F3F4;
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
+}
+.wm-app .app-calendar .well.well-sm {
+  background-color: #F3F3F4;
+  padding: 0;
+  margin: 0;
+}
+.wm-app .app-calendar .well.well-sm button {
+  border: none;
 }
 .wm-app .app-calendar .fc .fc-state-default {
   background: #fff;

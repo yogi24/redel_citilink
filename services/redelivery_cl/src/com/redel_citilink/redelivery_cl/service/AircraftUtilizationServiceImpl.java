@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+import com.wavemaker.commons.MessageResource;
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
 import com.wavemaker.runtime.data.export.DataExportOptions;
@@ -106,7 +107,7 @@ public class AircraftUtilizationServiceImpl implements AircraftUtilizationServic
         AircraftUtilization deleted = this.wmGenericDao.findById(aircraftutilizationId);
         if (deleted == null) {
             LOGGER.debug("No AircraftUtilization found with id: {}", aircraftutilizationId);
-            throw new EntityNotFoundException(String.valueOf(aircraftutilizationId));
+            throw new EntityNotFoundException(MessageResource.create("com.wavemaker.runtime.entity.not.found"), AircraftUtilization.class.getSimpleName(), aircraftutilizationId);
         }
         this.wmGenericDao.delete(deleted);
         return deleted;

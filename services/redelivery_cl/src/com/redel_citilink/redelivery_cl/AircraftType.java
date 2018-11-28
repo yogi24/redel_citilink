@@ -35,6 +35,7 @@ public class AircraftType implements Serializable {
 
     private Integer id;
     private String type;
+    private String manufactur;
     private List<Aircraft> aircrafts;
 
     @Id
@@ -56,6 +57,15 @@ public class AircraftType implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Column(name = "`manufactur`", nullable = true, length = 255)
+    public String getManufactur() {
+        return this.manufactur;
+    }
+
+    public void setManufactur(String manufactur) {
+        this.manufactur = manufactur;
     }
 
     @JsonInclude(Include.NON_EMPTY)

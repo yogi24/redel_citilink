@@ -1,5 +1,6 @@
 [ {
   "name" : "cool-blue",
-  "version" : "4.3",
-  "artifactType" : "THEME"
+  "version" : "4.7",
+  "artifactType" : "THEME",
+  "artifactDependencyList" : null
 } ]

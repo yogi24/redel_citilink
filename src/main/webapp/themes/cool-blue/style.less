@@ -147,9 +147,12 @@
       color: @brand-danger;
     }
 
-    .ng-touched.ng-invalid {
+    .ng-touched.ng-invalid .form-control {
       border-color: @brand-danger;
     }
+  }
+  .input-group-addon.colorpicker-container:last-child {
+    border-left: 1px solid @input-border;
   }
   .checkbox , .radio {
     padding: 0 @padding-base-horizontal;
@@ -235,6 +238,26 @@
       }
     }
   }
+
+  //Popover wrapper styles in Navbar
+  .nav li > .app-popover-wrapper a {
+    padding: @nav-link-padding;
+    &:hover, &:focus {
+      background-color: @nav-link-hover-bg;
+    }
+  }
+  .nav-pills {
+    > li {
+      .app-popover-wrapper a {
+        border-radius: @border-radius-base;
+      }
+      &.active .app-popover-wrapper a {
+        color: @nav-pills-active-link-hover-color;
+        background-color: @nav-pills-active-link-hover-bg;
+      }
+    }
+  }
+
   //Top Nav Bar
   .app-navbar {
     border-radius: 0;
@@ -242,18 +265,25 @@
 
     .navbar-nav {
       li {
-        a {
+        a, .app-popover-wrapper a{
           font-size: 1em;
           text-transform: uppercase;
           font-weight: normal;
           text-decoration: none;
           word-spacing: .4em;
-          &:hover, &:focus, &.active, &.app-popover-open {
+          &:hover, &:focus, &.active {
             color: @navbar-default-link-hover-color;
             background-color: @navbar-default-hover-bg;
           }
         }
 
+        .dropdown .dropdown-menu, .app-popover-wrapper a {
+          line-height: @line-height-computed;
+        }
+        &.active .app-popover-wrapper a {
+          background-color: @navbar-default-link-active-bg;
+          color: @navbar-default-link-active-color;
+        }
         > .dropdown .dropdown-menu {
           margin: 0;
           background-color: @navbar-default-bg;
@@ -268,8 +298,8 @@
       }
 
       .app-nav-item {
-        > .dropdown {
-          a.dropdown-toggle {
+        > .dropdown, .app-popover-wrapper {
+          a.dropdown-toggle, a {
             color: inherit;
             &:hover {
               background-color: @navbar-default-hover-bg;
@@ -287,6 +317,15 @@
       padding: 0;
     }
   }
+
+  .navbar-inverse .navbar-nav {
+    > li.active .app-popover-wrapper {
+      a, a:hover, a:focus, a:active {
+        color: @navbar-inverse-link-hover-color;
+        background-color: @navbar-inverse-link-active-bg;
+      }
+    }
+  }
   //Sets padding for menu list elements
   .dropdown-menu > li > a {
     padding-top: 8px;
@@ -296,9 +335,10 @@
   .app-left-panel, .app-right-panel {
     .nav {
       li {
+        margin-top: 0;
         //for overriding the pills default color
         &.active {
-          > a {
+          > a, .app-popover-wrapper a {
             color: inherit;
             background-color: @wm-left-panel-link-hover-bg;
             &:hover, &:focus {
@@ -307,8 +347,7 @@
             }
           }
         }
-        margin-top: 0;
-        a, .btn, .dropdown a, .dropdown a.dropdown-toggle, .app-popover a {
+        a, .btn, .dropdown a, .dropdown a.dropdown-toggle, .app-popover-wrapper a {
           font-size: 0.917em;
           text-transform: uppercase;
           letter-spacing: .025em;
@@ -457,6 +496,9 @@
     padding-bottom: 0;
   }
 
+  .model-holder[bsdatepicker] {
+    min-height: @input-height-base;
+  }
   //form widgets
   .app-form, .app-liveform {
     //for labels in the form
@@ -579,18 +621,14 @@
       color: @text-color;
     }
 
-    thead {
-      tr {
-        th {
-          height: 2.5em;
-          button {
-            font-size: 1em;
-            background: transparent;
-            border-color: transparent;
-            color: @text-color;
-            padding: 0.36em .63em;
-          }
-        }
+    thead tr th {
+      button.btn-default {
+        width: 100%;
+        font-size: 1em;
+        background: transparent;
+        color: @text-color;
+        border-color: transparent;
+        padding: 0.55em .83em;
       }
     }
 
@@ -601,7 +639,7 @@
         color: @text-color;
         width: auto;
         box-shadow: none;
-        padding: 0.36em .63em;
+        padding: 0.66em;
         &.btn-info {
           background-color: lighten(@brand-primary, 30%);
           color: @text-color;
@@ -619,8 +657,36 @@
           font-weight: bold;
         }
       }
+      td.is-highlighted:not(.disabled):not(.selected) span {
+        background-color: @component-active-bg;
+        border-color: @component-active-bg;
+        color: @component-active-color;
+        &.text-info {
+          color: inherit;
     }
-
+      }
+      td span {
+        &.text-info {
+          color: @brand-primary;
+          font-weight: bold;
+        }
+        &.selected {
+          background-color: lighten(@brand-primary, 30%);
+          color: @text-color;
+        }
+        &:hover:not(.fc-day-number) {
+          background-color: @component-active-bg;
+          border-color: @component-active-bg;
+          color: @component-active-color;
+        }
+        &.disabled, &.is-other-month {
+          &:hover {
+            color: rgba(0, 0, 0, 0.25);
+            background-color: rgba(168,168,168,0.05);
+          }
+        }
+      }
+    }
     small {
       font-size: 1em;
       font-weight: normal;
@@ -628,15 +694,22 @@
   }
 
   //styling for the popup calendar actions
-  .app-date, .app-datetime {
-    .dropdown-menu {
-      padding-top: 0;
-      li {
-        &:last-child {
-          border-top: 1px solid @input-border;
-          margin-top: 0.5em;
-          overflow: auto;
+  .bs-datepicker {
+    border: 1px solid @input-border;
+    .bs-datepicker-head {
+      background: @btn-default-bg;
+      color: @btn-default-color;
         }
+    .bs-datepicker-body {
+      padding: 0;
+      border: none;
+    }
+    table td.is-highlighted:not(.disabled):not(.selected) span {
+      background-color: @component-active-bg;
+      border-color: @component-active-bg;
+      color: @component-active-color;
+      &.text-info {
+        color: inherit;
       }
     }
   }
@@ -663,6 +736,14 @@
   .app-calendar {
     background-color: @body-bg;
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
+    .well.well-sm {
+      background-color: @body-bg;
+      padding: 0;
+      margin: 0;
+      button {
+        border: none;
+      }
+    }
     .fc {
       .fc-state-default {
         background: @btn-default-bg;
@@ -699,6 +780,7 @@
 /*********************************************************************************************************************************************/
 /****************************************************Advanced editors******************************************************************************/
 /*********************************************************************************************************************************************/
+/******rich-editor class*******/
   .app-richtexteditor {
     .btn-default {
       background: @component-active-color;

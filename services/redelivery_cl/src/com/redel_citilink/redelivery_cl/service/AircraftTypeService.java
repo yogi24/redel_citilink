@@ -23,6 +23,7 @@ import com.wavemaker.runtime.file.model.Downloadable;
 
 import com.redel_citilink.redelivery_cl.Aircraft;
 import com.redel_citilink.redelivery_cl.AircraftType;
+import com.redel_citilink.redelivery_cl.MtcTask;
 
 /**
  * Service object for domain model class {@link AircraftType}.
@@ -181,6 +182,18 @@ public interface AircraftTypeService {
      * @see Page
 	 */
     Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
+
+    /*
+     * Returns the associated mtcTasks for given AircraftType id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated MtcTask instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<MtcTask> findAssociatedMtcTasks(Integer id, Pageable pageable);
 
     /*
      * Returns the associated aircrafts for given AircraftType id.

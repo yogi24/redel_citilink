@@ -35,6 +35,7 @@ public class RedeliveryCondition implements Serializable {
     private String component;
     private String redelFlightHours;
     private String redelFlightCycle;
+    private String remarks;
     private Aircraft aircraft;
 
     @Id
@@ -83,6 +84,15 @@ public class RedeliveryCondition implements Serializable {
 
     public void setRedelFlightCycle(String redelFlightCycle) {
         this.redelFlightCycle = redelFlightCycle;
+    }
+
+    @Column(name = "`remarks`", nullable = true, length = 255)
+    public String getRemarks() {
+        return this.remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
